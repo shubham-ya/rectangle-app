@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import { useAreaContext } from './AreaContext';
 
-const Rectangle: React.FC = () => {
+const RectangleCalculator: React.FC = () => {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [area, setArea] = useState<number>(0);
+  const { calculateRectangleArea } = useAreaContext();
 
   const calculateArea = () => {
-    setArea(width * height);
+    setArea(calculateRectangleArea(width, height));
   };
 
   return (
     <div>
-      <h1>Rectangle Area Calculator</h1>
+      <h2>Rectangle Area Calculator</h2>
       <div>
         <label>
           Width:
@@ -34,15 +36,10 @@ const Rectangle: React.FC = () => {
       </div>
       <button onClick={calculateArea}>Calculate Area</button>
       <div>
-        <h2>Area: {area}</h2>
-      </div>
-      <div>
-        <svg height={height} width={width}>
-          <rect width={width} height={height} style={{ fill: "lime", stroke: "purple", strokeWidth: 1 }} />
-        </svg>
+        <h3>Area: {area}</h3>
       </div>
     </div>
   );
 };
 
-export default Rectangle;
+export default RectangleCalculator;
