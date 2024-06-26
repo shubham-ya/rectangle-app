@@ -37,6 +37,12 @@ const TriangleCalculator: React.FC = () => {
       <button onClick={calculateArea}>Calculate Area</button>
       <div>
         <h3>Area: {area}</h3>
+        <svg width="100%" height="200" viewBox="0 0 200 200">
+        <polygon
+          points={`0,${height} ${base},${height} 0,0`}
+          style={{ fill: 'lightblue', stroke: 'blue', strokeWidth: 1 }}
+        />
+      </svg>
       </div>
     </div>
   );
